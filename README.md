@@ -1,6 +1,6 @@
 # 多功能聊天室 子项目：GUI实现
 
-本项目为[多功能聊天室]（ https://github.com/wxq1999/versatile-chatroom ）中的客户端GUI的实现
+本项目为[多功能聊天室](https://github.com/wxq1999/versatile-chatroom)中的客户端GUI的实现
 
 ## 目标效果图
 
