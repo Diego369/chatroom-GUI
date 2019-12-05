@@ -51,3 +51,11 @@
 4. GUI美化
 
 许多小细节，如边框、不同部分间的空隙都需要调整。
+
+
+
+## version1.1
+
+完成了登录和注册界面
+
+![v1.1-login](README.assets/v1.1-login.png)
