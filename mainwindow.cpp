@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->widget_friend1->Init("Jay Chou");
     ui->widget_friend2->Init("Ten");
 
-
+    ui->verticalLayout->setSpacing(0);
 }
 
 MainWindow::~MainWindow()

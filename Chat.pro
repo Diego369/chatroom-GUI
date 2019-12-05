@@ -26,16 +26,22 @@ CONFIG += c++11
 
 SOURCES += \
         chatwidget.cpp \
+        login.cpp \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        register.cpp
 
 HEADERS += \
         chatwidget.h \
-        mainwindow.h
+        login.h \
+        mainwindow.h \
+        register.h
 
 FORMS += \
         chatwidget.ui \
-        mainwindow.ui
+        login.ui \
+        mainwindow.ui \
+        register.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -55,3 +61,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 #INCLUDEPATH += $$PWD/include
 #DEPENDPATH += $$PWD/include
+
+RESOURCES += \
+    Resource/Resource.qrc
