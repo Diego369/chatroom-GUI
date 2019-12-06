@@ -56,6 +56,12 @@
 
 ## version1.1
 
-完成了登录和注册界面
+初步完成了登录和注册界面
+
+登陆界面
 
 ![v1.1-login](README.assets/v1.1-login.png)
+
+注册界面
+
+![v1.1-register](README.assets/v1.1-register.png)
