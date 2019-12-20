@@ -81,6 +81,16 @@
        <property name="styleSheet">
         <string notr="true">border:1px solid grey;</string>
        </property>
+       <widget class="QTextEdit" name="textEdit_msg">
+        <property name="geometry">
+         <rect>
+          <x>-7</x>
+          <y>-1</y>
+          <width>1361</width>
+          <height>371</height>
+         </rect>
+        </property>
+       </widget>
       </widget>
      </item>
      <item>

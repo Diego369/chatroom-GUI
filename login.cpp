@@ -1,15 +1,19 @@
 ﻿#include "login.h"
 #include "ui_login.h"
 
-#include "mainwindow.h"
+#include "register.h"
 
 Login::Login(QWidget *parent) :
-    QWidget(parent),
+    BaseWidget(parent),
     ui(new Ui::Login)
 {
     ui->setupUi(this);
     ui->verticalLayout->setContentsMargins(0,0,0,0);
     ui->horizontalLayout->setContentsMargins(0,0,0,0);
+
+    //connect(ui->loginBtn,&QPushButton::clicked,this,&Login:);
+    connect(ui->pushButton_login,&QPushButton::clicked,this,&Login::confirm);
+    connect(ui->pushButton_register,&QPushButton::clicked,this,&Login::regist);
 }
 
 Login::~Login()
@@ -17,28 +21,52 @@ Login::~Login()
     delete ui;
 }
 
-void Login::on_pushButton_login_clicked()
+int Login::exec()
 {
-    switch(confirm())
-    {
-    case 0:
-        close();
-        MainWindow *w=new MainWindow();
-        w->show();
-        break;
-    }
+    this->show();
+    m_eventLoop=new QEventLoop(this);
+    m_eventLoop->exec();
+    return m_result;
 }
 
-int Login::confirm()
+void Login::accept()
 {
-    return 0;
+    m_result=QDialog::Accepted;
+    this->close();
 }
 
-void Login::on_pushButton_register_clicked()
+void Login::reject()
 {
-    if(r==nullptr)
-    {
-        r=new Register();
-        r->show();
+    m_result=QDialog::Rejected;
+    this->close();
+}
+
+void Login::loginSucceed()
+{
+    //
+    //验证过程
+    //
+    if(true)
+       this->accept();
+}
+
+void Login::regist()
+{
+    auto r = new Register(this);
+    r->setAttribute(Qt::WA_DeleteOnClose);
+    r->show();
+}
+void Login::closeEvent(QCloseEvent *event)
+{
+    if(m_eventLoop != nullptr) {
+        m_eventLoop->exit();
     }
+    QWidget::closeEvent(event);
+}
+
+
+
+void Login::confirm()
+{
+    this->loginSucceed();
 }

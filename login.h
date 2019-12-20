@@ -2,14 +2,15 @@
 #define LOGIN_H
 
 #include <QWidget>
-
+#include <QDialog>
+#include <QEventLoop>
 #include "register.h"
-
+#include "basewidget.h"
 namespace Ui {
 class Login;
 }
 
-class Login : public QWidget
+class Login : public BaseWidget
 {
     Q_OBJECT
 
@@ -17,17 +18,24 @@ public:
     explicit Login(QWidget *parent = nullptr);
     ~Login();
 
-private slots:
-    void on_pushButton_login_clicked();
+public slots:
+    int exec();
+    void accept();
+    void reject();
+    void loginSucceed();
+    void regist();
+    void confirm();
+protected:
+    void closeEvent(QCloseEvent *event);
 
-    void on_pushButton_register_clicked();
 
 private:
     Ui::Login *ui;
 
-    Register *r;
+    //Register *r;
+    QEventLoop *m_eventLoop;
+    int m_result = QDialog::Rejected;
 
-    int confirm();
 };
 
 #endif // LOGIN_H

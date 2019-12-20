@@ -25,23 +25,32 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        baseitem.cpp \
+        basewidget.cpp \
         chatwidget.cpp \
+        frienditem.cpp \
         login.cpp \
         main.cpp \
         mainwindow.cpp \
-        register.cpp
+        register.cpp \
+        registerv.cpp
 
 HEADERS += \
+        baseitem.h \
+        basewidget.h \
         chatwidget.h \
+        frienditem.h \
         login.h \
         mainwindow.h \
-        register.h
+        register.h \
+        registerv.h
 
 FORMS += \
         chatwidget.ui \
         login.ui \
         mainwindow.ui \
-        register.ui
+        register.ui \
+        registerv.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
