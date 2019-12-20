@@ -63,26 +63,40 @@ MainWindow::MainWindow(QWidget *parent) :
 //    header<<"friend";
     ui->treeWidget_friend->setHeaderLabel("friend");
     ui->treeWidget_friend->setHeaderHidden(true);
-    ui->treeWidget_friend->setRootIsDecorated(false);
+//    ui->treeWidget_friend->setRootIsDecorated(false);
     ui->treeWidget_friend->setColumnHidden(1,true);
+    ui->treeWidget_friend->setColumnHidden(2,true);
+    ui->treeWidget_friend->setColumnHidden(3,true);
     qDebug()<<"connext";
     connect(ui->treeWidget_friend,SIGNAL(itemDoubleClicked(QTreeWidgetItem*, int)),this,SLOT(showWidget(QTreeWidgetItem*,int)));
     ui->treeWidget_group->setHeaderLabel("group");
     ui->treeWidget_group->setHeaderHidden(true);
-    ui->treeWidget_group->setRootIsDecorated(false);
+//    ui->treeWidget_group->setRootIsDecorated(false);
     ui->treeWidget_group->setColumnHidden(1,true);
+    ui->treeWidget_group->setColumnHidden(2,true);
+    ui->treeWidget_group->setColumnHidden(3,true);
     //ui->verticalLayout->setSpacing(0);
 
     ui->treeWidget_message->setHeaderLabel("message");
     ui->treeWidget_message->setHeaderHidden(true);
     ui->treeWidget_message->setColumnHidden(1,true);
+    ui->treeWidget_message->setColumnHidden(2,true);
+    ui->treeWidget_message->setColumnHidden(3,true);
+    ui->treeWidget_message->setColumnHidden(4,true);
+    connect(ui->treeWidget_message,SIGNAL(itemClicked(QTreeWidgetItem*,int)),this,SLOT(setCurrentChatPage(QTreeWidgetItem*,int)));
 
 
     //************** test ******************
-    auto abc=createFriendGroup("abc");
-    createFriendGroup("qwe");
-    addFriendtoGroup(abc,"roo","hello",":/pic/test4.png");
-    createMessage("roo","hello",":/pic/test4.png");
+//    QPixmap myavatar(":/pic/test4.png");
+//    ui->pushButton_avatar->setIcon(myavatar);
+//    ui->pushButton_avatar->setb
+    ui->pushButton_avatar->setStyleSheet("border-image: url(:/pic/test4.png);");
+
+    auto a=createFriendGroup("abc");
+    auto b=createFriendGroup("qwe");
+    addFriendtoGroup(a,"roo","hello",":/pic/test4.png");
+    addFriendtoGroup(b,"Zhou","Jay",":/pic/test4.png");
+//    createMessage("roo","hello",":/pic/test4.png");
 
 //    auto mylist=ui->treeWidget_friend->findItems("dady",Qt::MatchExactly);
 //    auto mylist=ui->treeWidget_friend->findItems("dady",Qt::MatchContains | Qt::MatchRecursive);
@@ -142,7 +156,7 @@ void MainWindow::windowmin()
 
 void MainWindow::on_ChatButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget->setCurrentIndex(2);
 }
 
 void MainWindow::on_FriendButton_clicked()
@@ -151,7 +165,7 @@ void MainWindow::on_FriendButton_clicked()
 }
 void MainWindow::on_pushButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget->setCurrentIndex(0);
 }
 void MainWindow::on_pushButton_2_clicked()
 {
@@ -312,7 +326,7 @@ void MainWindow::showWidget(QTreeWidgetItem* item1,int c)
     qDebug()<<"showw";
     //从列表移除分组或好友
     QTreeWidgetItem *parent=item1->parent();
-//    int index;
+    int index;
     if(parent)
     {
         //如果不是一级列表！从父对象中删
@@ -324,16 +338,25 @@ void MainWindow::showWidget(QTreeWidgetItem* item1,int c)
 
             if(mylist.isEmpty())
             {
-                qDebug()<<"empty";
+                qDebug()<<"empty\nnew";
+                ChatWidget *chatw=new ChatWidget(this);
+                chatw->Init(item1->text(1));
+                index=ui->stackedWidget_chat->addWidget(chatw);
+                qDebug()<<"index:"<<index;
+                createMessage(item1->text(1),item1->text(2),item1->text(3),index);
             }
             else
             {
                 qDebug()<<"not empty";
                 foreach(QTreeWidgetItem* item, mylist)
                 {
-                    qDebug() << item->text(0);
+                    qDebug() << item->text(1);
+                    index=item->text(4).toInt();
                 }
             }
+            ui->stackedWidget->setCurrentIndex(2);
+            ui->stackedWidget_chat->setCurrentIndex(index);
+
         //ui->treeWidget_friend->removeItemWidget(parent->takeChild(index),0);
     }
     else {
@@ -345,7 +368,11 @@ void MainWindow::showWidget(QTreeWidgetItem* item1,int c)
     }
 //    return toSet;
 }
-
+void MainWindow::setCurrentChatPage(QTreeWidgetItem* item,int c)
+{
+    ui->stackedWidget_chat->setCurrentIndex(item->text(4).toInt());
+    qDebug()<<item->text(4).toInt();
+}
 //新建一个好友分组
 QTreeWidgetItem *MainWindow::createFriendGroup(QString grpName)
 {
@@ -360,6 +387,8 @@ QTreeWidgetItem *MainWindow::addFriendtoGroup(QTreeWidgetItem *grp,QString mainT
     //向一个分组里添加一个好友，也就是向二级表项里插入一个三级表项
     QTreeWidgetItem *item11=new QTreeWidgetItem(grp);
     item11->setText(1,mainTitle);
+    item11->setText(2,subTitle);
+    item11->setText(3,avatarAddr);
     ui->treeWidget_friend->setItemWidget(item11,0,createItem(mainTitle,avatarAddr,subTitle,ItemType_Friend));
     return item11;
 }
@@ -441,13 +470,17 @@ QWidget *MainWindow::createRoomItem(QString mainTitle, QString iconAddr)
     return myItem;
 }
 //在消息面板添加一个消息
-QTreeWidgetItem *MainWindow::createMessage(QString mainTitle,QString subTitle,QString avatarAddr)
+QTreeWidgetItem *MainWindow::createMessage(QString mainTitle,QString subTitle,QString avatarAddr,int index)
 {
     //先添加一个表项到消息列表
     QTreeWidgetItem *item1=new QTreeWidgetItem;
     ui->treeWidget_message->addTopLevelItem(item1);
     item1->setText(1,mainTitle);
+    item1->setText(2,subTitle);
+    item1->setText(3,avatarAddr);
+    item1->setText(4,QString::number(index));
     qDebug()<<"msgtext1:"<<item1->text(1);
+    qDebug()<<"msgtext4:"<<item1->text(4);
     //再把这个表项里的控件插入进去，下面都是这样
     ui->treeWidget_message->setItemWidget(item1,0,createItem(mainTitle,avatarAddr,subTitle));
     return item1;

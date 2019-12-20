@@ -38,7 +38,7 @@ public:
     QTreeWidgetItem *removeFriendOrGroup(QTreeWidgetItem *toSet);
     QTreeWidgetItem *addFriendtoGroupAtTop(QTreeWidgetItem *grp, QString mainTitle, QString subTitle, QString avatarAddr);
     QTreeWidgetItem *setFriendToTop(QTreeWidgetItem *toSet, QString mainTitle, QString subTitle, QString avatarAddr, QTreeWidgetItem *grp = nullptr);
-    QTreeWidgetItem *createMessage(QString mainTitle, QString subTitle, QString avatarAddr);
+    QTreeWidgetItem *createMessage(QString mainTitle, QString subTitle, QString avatarAddr,int index);
 
     void displayProfilePanel();
     void displayAvatarChangePanel();
@@ -65,6 +65,7 @@ private slots:
     void on_pushButton_clicked();
 
     void showWidget(QTreeWidgetItem* item1,int c);
+    void setCurrentChatPage(QTreeWidgetItem* item,int c);
 
 private:
     Ui::MainWindow *ui;

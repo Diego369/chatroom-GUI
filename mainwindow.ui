@@ -59,7 +59,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="page">
          <property name="styleSheet">
@@ -123,8 +123,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>464</width>
-                      <height>72</height>
+                      <width>478</width>
+                      <height>766</height>
                      </rect>
                     </property>
                     <layout class="QGridLayout" name="gridLayout_6">
@@ -327,7 +327,7 @@
                 </rect>
                </property>
                <property name="currentIndex">
-                <number>0</number>
+                <number>1</number>
                </property>
                <widget class="QWidget" name="page_list_friend">
                 <widget class="QTreeWidget" name="treeWidget_friend">
@@ -356,6 +356,16 @@
                  <column>
                   <property name="text">
                    <string>2</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>3</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>4</string>
                   </property>
                  </column>
                 </widget>
@@ -387,6 +397,16 @@
                  <column>
                   <property name="text">
                    <string>2</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>3</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>4</string>
                   </property>
                  </column>
                 </widget>
@@ -439,18 +459,26 @@
                    <string>2</string>
                   </property>
                  </column>
+                 <column>
+                  <property name="text">
+                   <string>3</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>4</string>
+                  </property>
+                 </column>
                 </widget>
                </item>
               </layout>
              </widget>
             </item>
             <item>
-             <widget class="QStackedWidget" name="stackedWidget_2">
+             <widget class="QStackedWidget" name="stackedWidget_chat">
               <property name="styleSheet">
-               <string notr="true">background-color: rgb(85, 255, 255);</string>
+               <string notr="true"/>
               </property>
-              <widget class="QWidget" name="page_4"/>
-              <widget class="QWidget" name="page_5"/>
              </widget>
             </item>
            </layout>
@@ -481,14 +509,23 @@
           <layout class="QHBoxLayout" name="horizontalLayout">
            <item>
             <widget class="QPushButton" name="pushButton_avatar">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="minimumSize">
               <size>
-               <width>0</width>
+               <width>150</width>
                <height>150</height>
               </size>
              </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
              <property name="text">
-              <string>PushButton</string>
+              <string/>
              </property>
             </widget>
            </item>
@@ -508,14 +545,14 @@
            <item>
             <widget class="QPushButton" name="ChatButton">
              <property name="text">
-              <string>broadcast</string>
+              <string>chat</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QPushButton" name="FriendButton">
              <property name="text">
-              <string>voice mode</string>
+              <string>friend</string>
              </property>
             </widget>
            </item>
