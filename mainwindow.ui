@@ -59,7 +59,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="page">
          <property name="styleSheet">
@@ -208,7 +208,7 @@
               <property name="styleSheet">
                <string notr="true"/>
               </property>
-              <widget class="QPushButton" name="pushButton_4">
+              <widget class="QToolButton" name="toolButton_menu">
                <property name="geometry">
                 <rect>
                  <x>439</x>
@@ -218,7 +218,7 @@
                 </rect>
                </property>
                <property name="text">
-                <string>PushButton</string>
+                <string/>
                </property>
               </widget>
               <widget class="QWidget" name="widget_4" native="true">
