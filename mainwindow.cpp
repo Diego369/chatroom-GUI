@@ -223,7 +223,7 @@ void MainWindow::setMenu()
     QMenu *menu=new QMenu(this);
     ui->toolButton_menu->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     ui->toolButton_menu->setArrowType(Qt::UpArrow);
-    ui->toolButton_menu->setDown(false);
+//    ui->toolButton_menu->setDown(false);
     ui->toolButton_menu->setToolTip("add");
     ui->toolButton_menu->setPopupMode(QToolButton::MenuButtonPopup);
     ui->toolButton_menu->setAutoRaise(true);
