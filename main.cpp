@@ -6,13 +6,9 @@
 #include <QTextCodec>
 int main(int argc, char *argv[])
 {
-    //QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF8"));
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF8"));
     QApplication a(argc, argv);
-//    MainWindow w;
-//    w.show();
-//    Login l;
-//    l.show();
-//    return a.exec();
+
     Login w;
     if (w.exec() == QDialog::Accepted) {
         // 登录成功，则转到主窗口

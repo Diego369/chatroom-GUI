@@ -11,7 +11,6 @@ Login::Login(QWidget *parent) :
     ui->verticalLayout->setContentsMargins(0,0,0,0);
     ui->horizontalLayout->setContentsMargins(0,0,0,0);
 
-    //connect(ui->loginBtn,&QPushButton::clicked,this,&Login:);
     connect(ui->pushButton_login,&QPushButton::clicked,this,&Login::confirm);
     connect(ui->pushButton_register,&QPushButton::clicked,this,&Login::regist);
 }
@@ -43,11 +42,8 @@ void Login::reject()
 
 void Login::loginSucceed()
 {
-    //
-    //验证过程
-    //
-    if(true)
-       this->accept();
+
+    this->accept();
 }
 
 void Login::regist()
@@ -68,5 +64,9 @@ void Login::closeEvent(QCloseEvent *event)
 
 void Login::confirm()
 {
-    this->loginSucceed();
+    //todo
+    //验证过程
+
+    if(true)
+        this->loginSucceed();
 }

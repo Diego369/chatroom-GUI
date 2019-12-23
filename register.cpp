@@ -1,5 +1,5 @@
 ﻿#include "register.h"
-#include "registerv.h"
+
 #include "ui_register.h"
 #include <QMessageBox>
 #include <QEvent>
@@ -16,9 +16,3 @@ Register::~Register()
     delete ui;
 }
 
-void Register::on_pushButton_clicked()
-{
-    auto r = new RegisterV(this);
-    r->setAttribute(Qt::WA_DeleteOnClose);
-    r->show();
-}

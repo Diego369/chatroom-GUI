@@ -18,8 +18,6 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void initNoweStyle();
-
     void mousePressEvent(QMouseEvent *e);
     void mouseMoveEvent(QMouseEvent *e);
     void mouseReleaseEvent(QMouseEvent *e);
@@ -40,10 +38,9 @@ public:
     QTreeWidgetItem *setFriendToTop(QTreeWidgetItem *toSet, QString mainTitle, QString subTitle, QString avatarAddr, QTreeWidgetItem *grp = nullptr);
     QTreeWidgetItem *createMessage(QString mainTitle, QString subTitle, QString avatarAddr,int index);
 
-    void displayProfilePanel();
-    void displayAvatarChangePanel();
+
     void displayAddPanel();
-    void displayCreateRoomPanel();
+
 
 
 private slots:
@@ -51,9 +48,6 @@ private slots:
 
     void on_FriendButton_clicked();
 
-    void on_pushButton_2_clicked();
-
-    void on_pushButton_3_clicked();
 
     void on_pushButton_friend_clicked();
 
@@ -62,7 +56,6 @@ private slots:
     void windowclosed();
     void windowmin();
 
-    void on_pushButton_clicked();
 
     void showWidget(QTreeWidgetItem* item1,int c);
     void setCurrentChatPage(QTreeWidgetItem* item,int c);
